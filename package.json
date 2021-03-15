@@ -11,7 +11,7 @@
     "backend": "nodemon server.js",
     "dev": "concurrently \"npm run backend\" \"cd client && npm run serve\"",
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm run build"
   },
   "author": "",
   "license": "ISC",
