@@ -25,10 +25,6 @@ app.use(morgan());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.json('fuck you');
-});
-
 const productRoute = require('./routes/product.js');
 const userRoute = require('./routes/auth.js');
 const reviewRoute = require('./routes/review.js');
