@@ -15,35 +15,32 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: ""
     };
   },
   methods: {
     kimchi() {
-      alert('boom');
+      alert("boom");
     },
     async loginUser() {
       try {
         let user = { email: this.email, password: this.password };
-        let response = await axios.post(
-          'http://localhost:3000/api/auth/login',
-          user
-        );
+        let response = await axios.post("/api/auth/login", user);
         console.log(response.data);
         if (response.data.success) {
-          this.$store.commit('setToken', response.data.token);
-          this.$router.push('/');
+          this.$store.commit("setToken", response.data.token);
+          this.$router.push("/");
         }
       } catch (error) {
         console.log(error);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -112,7 +109,7 @@ export default {
 }
 .container:before,
 .container:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }

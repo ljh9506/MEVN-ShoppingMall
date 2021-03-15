@@ -12,30 +12,27 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: ""
     };
   },
   methods: {
     kimchi() {
-      alert('boom');
+      alert("boom");
     },
     async signupUser() {
       let user = {
         email: this.email,
-        password: this.password,
+        password: this.password
       };
-      let response = await axios.post(
-        'http://localhost:3000/api/auth/signup',
-        user
-      );
+      let response = await axios.post("/api/auth/signup", user);
       console.log(response.data);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -104,7 +101,7 @@ export default {
 }
 .container:before,
 .container:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }

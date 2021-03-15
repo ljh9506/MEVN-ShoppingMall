@@ -1,15 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 
 const app = express();
 
 mongoose.connect(
-  'mongodb://localhost/shoppingmall',
-  { useUnifiedTopology: true, useNewUrlParser: true },
+  'mongodb+srv://leejh95:wnsgml95@cluster0.ujpis.mongodb.net/shoppingmall',
+  { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: true },
   (err) => {
     if (err) {
       console.log('its  error');
@@ -45,6 +45,6 @@ app.listen(PORT, (error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log('app listening on 3000 port');
+    console.log('app listening on 5000 port');
   }
 });

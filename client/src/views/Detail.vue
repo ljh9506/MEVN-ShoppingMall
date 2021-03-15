@@ -331,12 +331,8 @@ export default {
     },
     async fetchData() {
       try {
-        const recommendedProducts = axios.get(
-          "http://localhost:3000/api/products"
-        );
-        const product = axios.get(
-          `http://localhost:3000/api/products/${this.$route.params.id}`
-        );
+        const recommendedProducts = axios.get("/api/products");
+        const product = axios.get(`/api/products/${this.$route.params.id}`);
         const [productsResponse, singleResponse] = await Promise.all([
           recommendedProducts,
           product

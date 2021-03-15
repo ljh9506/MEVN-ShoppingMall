@@ -41,7 +41,7 @@
                           46,
                           19,
                           31,
-                          17,
+                          17
                         ]"
                       >
                       </starRating>
@@ -93,7 +93,7 @@
                     </ul>
                     <router-link
                       :to="{
-                        path: `/review/${product.id}`,
+                        path: `/review/${product.id}`
                       }"
                       class="review__write"
                     >
@@ -199,21 +199,21 @@
 </template>
 
 <script>
-import starRating from 'vue-star-rating';
-import { interceptorAxios } from '../api/index';
-import axios from 'axios';
+import starRating from "vue-star-rating";
+import { interceptorAxios } from "../api/index";
+import axios from "axios";
 export default {
   components: {
-    starRating,
+    starRating
   },
   data() {
     return {
-      product: '',
+      product: "",
       modal: false,
-      imgSrc: '',
+      imgSrc: "",
       ratings: [],
-      ratingCounts: '',
-      ratingSum: 0,
+      ratingCounts: "",
+      ratingSum: 0
     };
   },
 
@@ -221,7 +221,7 @@ export default {
     async onDeleteReview(review) {
       console.log(review.productID, review._id);
       try {
-        if (confirm('Are you sure you want to delete it?') === true) {
+        if (confirm("Are you sure you want to delete it?") === true) {
           const response = await interceptorAxios.delete(
             `reviews/${review._id}?productID=${review.productID}`
           );
@@ -242,23 +242,23 @@ export default {
     },
     clickModal(e) {
       if (
-        e.target.classList.contains('cancel-btn') ||
-        e.target.classList.contains('overlay')
+        e.target.classList.contains("cancel-btn") ||
+        e.target.classList.contains("overlay")
       ) {
         this.modal = false;
       }
     },
     async fetchData() {
-      this.product = '';
+      this.product = "";
       this.ratings = [];
       this.ratingCounts = [];
       this.ratingSum = 0;
 
       const response = await axios.get(
-        `http://localhost:3000/api/products/${this.$route.params.id}`
+        `/api/products/${this.$route.params.id}`
       );
       this.product = response.data.product;
-      this.product.reviews.forEach((prod) => this.ratings.push(prod.rating));
+      this.product.reviews.forEach(prod => this.ratings.push(prod.rating));
       console.log(this.ratings);
       this.ratingCounts = this.ratings
         .reduce(
@@ -274,13 +274,13 @@ export default {
         )
         .slice()
         .reverse();
-      this.ratingCounts.forEach((rating) => (this.ratingSum += rating));
+      this.ratingCounts.forEach(rating => (this.ratingSum += rating));
       console.log(this.ratingCounts);
-    },
+    }
   },
   async mounted() {
     this.fetchData();
-  },
+  }
 };
 </script>
 

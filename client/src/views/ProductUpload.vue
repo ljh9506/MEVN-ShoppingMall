@@ -140,7 +140,7 @@ export default {
       if (response.data.success) {
         this.$router.push("/");
       } else {
-        console.log("fuck it");
+        console.log("error");
       }
     }
   }
