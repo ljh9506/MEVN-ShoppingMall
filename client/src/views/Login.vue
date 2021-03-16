@@ -1,5 +1,6 @@
 <template>
   <div class="login-page">
+      <h2> Login</h2>
     <div class="form">
       <form class="login-form" @submit.prevent="loginUser()">
         <input type="text" placeholder="email" v-model="email" />
@@ -134,5 +135,16 @@ export default {
 }
 .container .info span .fa {
   color: #ef3b3a;
+}
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 900px) {
+  h2 {
+    margin-top: 100px;
+  }
 }
 </style>

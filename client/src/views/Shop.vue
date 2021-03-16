@@ -299,7 +299,7 @@ export default {
 <style>
 .bread__crumb {
   background-color: #f3f2ee;
-  padding: 40px 0;
+  padding: 80px 0 40px 0;
 }
 .shop {
   padding: 100px 0;
@@ -394,5 +394,10 @@ export default {
 .shop__sidebar__tag a:hover {
   background-color: #000;
   color: #f1f5f8;
+}
+@media screen and (max-width: 900px) {
+  .shop {
+    padding: 40px 0;
+  }
 }
 </style>

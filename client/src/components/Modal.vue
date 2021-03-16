@@ -1,6 +1,34 @@
 <template>
-  <div class="centerx ">
-    <!-- <vs-button @click="openPrompt" color="primary" type="border">Run prompt</vs-button> -->
+  <div class="center">
+    <vs-button shadow @click="active = !active">
+      Qucik View
+    </vs-button>
+    <vs-dialog overflow-hidden v-model="active">
+      <template #header>
+        <h3>
+          Introduction
+        </h3>
+      </template>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 justify-content-center">
+            <img :src="product.photo" alt="" />
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <h4>Title: {{ product.title }}</h4>
+            <p>Description: {{ product.description }}</p>
+            <p>Category: {{ product.category }}</p>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <p>${{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+    </vs-dialog>
+  </div>
+</template>
+
+<!-- <div class="centerx ">
     <div>
       {{ val == null ? 'null' : val }}
     </div>
@@ -47,23 +75,17 @@
         </div>
       </div>
     </vs-prompt>
-  </div>
-</template>
+  </div> -->
 
 <script>
 export default {
-  data() {
-    return {
-      activePrompt: false,
-      activePrompt2: false,
-      val: '',
-      valMultipe: {
-        value1: '',
-        value2: '',
-      },
-    };
-  },
-  props: ['product'],
+  data: () => ({
+    active: false,
+    input1: "",
+    input2: "",
+    checkbox1: false
+  }),
+  props: ["product"]
 
   //   methods: {
   //     acceptAlert(color) {
@@ -90,7 +112,13 @@ export default {
 }
 
 .vs-dialog {
-  max-width: 80% !important;
-  overflow: scroll !important;
+  min-width: 500px !important;
+  overflow-x: hidden !important;
+}
+.vs-dialog__header {
+  padding: 24px !important;
+}
+.vs-icon-close {
+  padding: 30px !important;
 }
 </style>

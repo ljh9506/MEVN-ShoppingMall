@@ -21,4 +21,10 @@ export default {
 <style>
 @import url("../public/grid.min.css");
 @import url("../public/main.css");
+@media screen and (max-width: 900px) {
+  .vs-navbar {
+    padding: 20px 10px !important;
+  }
+  
+}
 </style>

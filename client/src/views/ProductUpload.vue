@@ -148,6 +148,9 @@ export default {
 </script>
 
 <style>
+main {
+  margin-top: 60px;
+}
 .a-spacing-top-medium {
   margin-bottom: 50px;
 }

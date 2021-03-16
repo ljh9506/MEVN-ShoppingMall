@@ -46,6 +46,7 @@
                       >
                       </starRating>
                     </div>
+                    
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -127,22 +128,26 @@
                             :key="i"
                           ></i>
                         </div>
+                        <span
+                          class="deleteButton"
+                          @click="onDeleteReview(review)"
+                          >Delete this review <i class="fas fa-trash" style="color: red"></i></span
+                        >
                       </div>
                       <p class="text__writer">{{ review.writer.email }}</p>
                       <p class="text__date">
                         {{ review.created_at | formatDate }}
                       </p>
                       <div class="box__recommend">
-                        <span
-                          class="deleteButton"
-                          @click="onDeleteReview(review)"
-                          >Delete this review</span
-                        >
+                        <div>
+
                         <span class="text">Was it helpful?</span>
                         <button class="review__btn">
                           <i class="far fa-thumbs-up"></i>
                           <span class="btn__count">0</span>
                         </button>
+                        </div>
+                        
                       </div>
                     </div>
                   </div>
@@ -409,21 +414,23 @@ export default {
 }
 .rating {
   display: flex;
+  align-items: center;
   flex-direction: row !important;
+  width: auto;
 }
 .text__writer {
   color: #acacac;
   font-size: 13px;
-  margin: 0 20px 0 20px;
+  margin-right: 6px;
 }
 .text__date {
   color: #acacac;
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 12px;
   border-left: 1px solid #acacac;
 }
 .review__btn {
-  padding: 12px 20px;
+  padding: 6px 10px;
   border: 1px solid #acacac;
   border-radius: 24px;
   background-color: #fff;
@@ -454,11 +461,41 @@ export default {
 }
 .deleteButton {
   display: inline-block;
+  font-size: 16px;
   padding: 5px 10px;
-  color: #acacac;
+  color: red;
   border-radius: 24px;
   font-weight: bolder;
   cursor: pointer;
-  margin-right: 20px;
+}
+@media screen and (max-width: 900px) {
+  .review__list__top {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.text__writer {
+  margin: 8px 0;
+}
+.text__date {
+  padding: 0;
+  border-left: none;
+  margin-bottom: 12px;
+}
+.deleteButton {
+  padding: 0;
+  color: red;
+}
+.box__recommend {
+  margin-left: 0;
+}
+.rating {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.deleteButton {
+  margin-left: auto;
+}
 }
 </style>

@@ -2,7 +2,9 @@
   <div class="container">
     <vs-navbar shadow square center-collapsed v-model="active">
       <template #left>
+        <router-link to="/">
         <img src="../img/logo.png" alt="logo" />
+        </router-link>
       </template>
       <template #right>
         <vs-button
@@ -14,20 +16,34 @@
           <i class="fas fa-bars"></i>
         </vs-button>
       </template>
-      <vs-navbar-item :active="active == 'guide'" id="guide">
-        Guide
+      <vs-navbar-item :active="active == 'home'" id="home">
+        <router-link to="/">Home</router-link>
       </vs-navbar-item>
-      <vs-navbar-item :active="active == 'docs'" id="docs">
-        Documents
+      <vs-navbar-item :active="active == 'shop'" id="shop">
+        <router-link to="/shop">Shop</router-link>
       </vs-navbar-item>
-      <vs-navbar-item :active="active == 'components'" id="components">
-        Components
+      <vs-navbar-item :active="active == 'product'" id="product">
+        <router-link to="/product">Upload Product</router-link>
       </vs-navbar-item>
-      <vs-navbar-item :active="active == 'license'" id="license">
-        license
+      <vs-navbar-item :active="active == 'login'" id="login">
+        <router-link
+              to="/login"
+              class="login__route"
+              :class="{ hidden: this.$store.getters.isLogin }"
+              >Login</router-link
+            >
       </vs-navbar-item>
-      <vs-navbar-item flat>Login</vs-navbar-item>
-      <vs-navbar-item>Get Started</vs-navbar-item>
+      <vs-navbar-item :active="active == 'signup'" id="signup">
+         <router-link
+              v-if="!this.$store.getters.isLogin"
+              to="/signup"
+              class="login__route"
+              >Signup</router-link
+            >
+            <a v-else href="#" class="logout__route" @click="logoutUser"
+              >Logout</a
+            >
+      </vs-navbar-item>
     </vs-navbar>
     <vs-sidebar left absolute v-model="active" :open.sync="activeSidebar">
       <template #logo>
@@ -37,113 +53,44 @@
         <template #icon>
           <i class="bx bx-home"></i>
         </template>
-        Home
+                <router-link to="/">Home</router-link>
+
       </vs-sidebar-item>
       <vs-sidebar-item id="market">
         <template #icon>
           <i class="bx bx-grid-alt"></i>
         </template>
-        Market Overview
+        <router-link to="/shop">Shop</router-link>
       </vs-sidebar-item>
       <vs-sidebar-item id="Music">
         <template #icon>
           <i class="bx bxs-music"></i>
         </template>
-        Music
+        <router-link to="/product">Upload Product</router-link>
       </vs-sidebar-item>
-      <vs-sidebar-group>
-        <template #header>
-          <vs-sidebar-item arrow>
-            <template #icon>
-              <i class="bx bx-group"></i>
-            </template>
-            Social media
-          </vs-sidebar-item>
-        </template>
-
-        <vs-sidebar-item id="Instagram">
-          <template #icon>
-            <i class="bx bxl-instagram"></i>
-          </template>
-          Instagram
-        </vs-sidebar-item>
-        <vs-sidebar-item id="twitter">
-          <template #icon>
-            <i class="bx bxl-twitter"></i>
-          </template>
-          Twitter
-        </vs-sidebar-item>
-        <vs-sidebar-item id="Facebook">
-          <template #icon>
-            <i class="bx bxl-facebook"></i>
-          </template>
-          Facebook
-        </vs-sidebar-item>
-      </vs-sidebar-group>
-      <vs-sidebar-group>
-        <template #header>
-          <vs-sidebar-item arrow>
-            <template #icon>
-              <i class="bx bx-code-alt"></i>
-            </template>
-            Coding
-          </vs-sidebar-item>
-        </template>
-
-        <vs-sidebar-item id="github">
-          <template #icon>
-            <i class="bx bxl-github"></i>
-          </template>
-          Github
-        </vs-sidebar-item>
-        <vs-sidebar-item id="codepen">
-          <template #icon>
-            <i class="bx bxl-codepen"></i>
-          </template>
-          Codepen
-        </vs-sidebar-item>
-        <vs-sidebar-item id="discord">
-          <template #icon>
-            <i class="bx bxl-discord"></i>
-          </template>
-          Discord
-        </vs-sidebar-item>
-        <vs-sidebar-item id="Javascript">
-          <template #icon>
-            <i class="bx bxl-javascript"></i>
-          </template>
-          Javascript
-        </vs-sidebar-item>
-        <vs-sidebar-item id="git">
-          <template #icon>
-            <i class="bx bxl-git"></i>
-          </template>
-          Git
-        </vs-sidebar-item>
-      </vs-sidebar-group>
-      <vs-sidebar-item id="donate">
-        <template #icon>
-          <i class="bx bxs-donate-heart"></i>
-        </template>
-        Donate
-      </vs-sidebar-item>
-      <vs-sidebar-item id="drink">
-        <template #icon>
-          <i class="bx bx-drink"></i>
-        </template>
-        Drink
-      </vs-sidebar-item>
+     
       <vs-sidebar-item id="shopping">
         <template #icon>
           <i class="bx bxs-shopping-bags"></i>
         </template>
-        Shopping
+        <router-link
+              to="/login"
+              :class="{ hidden: this.$store.getters.isLogin }"
+              >Login</router-link
+            >
       </vs-sidebar-item>
       <vs-sidebar-item id="chat">
         <template #icon>
           <i class="bx bx-chat"></i>
         </template>
-        Chat
+       <router-link
+              v-if="!this.$store.getters.isLogin"
+              to="/signup"
+              >Signup</router-link
+            >
+            <a v-else href="#" class="logout__route" @click="logoutUser"
+              >Logout</a
+            >
       </vs-sidebar-item>
       <template #footer>
         <vs-row justify="space-between">
@@ -185,14 +132,6 @@ export default {
 }
 .vs-sidebar {
   display: none !important;
-}
-@media screen and (min-width: 900px) {
-  .toggle {
-    display: none;
-  }
-  /* .vs-sidebar-content {
-    display: none;
-  } */
 }
 .logo {
   max-width: 120px;
@@ -260,8 +199,7 @@ li .router-link-exact-active:after {
   background-color: white;
 }
 .logout__route {
-  font-size: 18px;
-  margin-left: 12px;
+  color: red;
 }
 .hidden {
   display: none;
@@ -269,4 +207,11 @@ li .router-link-exact-active:after {
 .a-icon {
   font-size: 18px;
 }
+
+.router-link-active {
+  display: block !important; 
+  width: 100% !important;
+ padding: 0 100px 0 0 !important;
+}
+
 </style>

@@ -3,9 +3,10 @@
     <section class="hero">
       <carousel
         :per-page="1"
-        :autoplayTimeout="1000"
+        :autoplayTimeout="2000"
         :autoplay="true"
         :paginationEnabled="false"
+        :loop="true"
       >
         <Slide>
           <div class="hero__slider">
@@ -65,7 +66,7 @@
     <section class="banner">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 offset-lg-4">
+          <div class="col-lg-7 offset-lg-4 clothes">
             <div class="banner__item">
               <div class="banner__item__pic">
                 <img src="../img/banner/banner-1.jpg" alt="img" />
@@ -215,22 +216,6 @@ export default {
 .hero__text p {
   color: #3d3d3d;
   margin-bottom: 35px;
-}
-@media screen and (max-width: 700px) {
-  .hero__slider {
-    background-image: url("../img/hero/hero-2.jpg");
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-top: 200px;
-  }
-  .hero__text h6 {
-    font-size: 22px;
-  }
-  .hero__text h2 {
-    font-size: 22px;
-  }
 }
 .primary-btn {
   display: inline-block;
@@ -436,5 +421,41 @@ export default {
   background-color: #000;
   color: #fff;
   transition: 0.5s;
+}
+@media screen and (max-width: 700px) {
+  .hero__slider {
+    background-image: url("../img/hero/hero-2.jpg");
+    height: 100vh;
+    width: 100%;
+  background-position: 52% 50%;
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+  }
+  .hero__text h6 {
+    font-size: 22px;
+  }
+  .hero__text h2 {
+    font-size: 22px;
+  }
+  .clothes {
+    display: none;
+  }
+  .product {
+    padding-top: 0;
+  }
+  .banner__item__desc {
+    position: relative;
+    font-size: 18px;
+    top: 0;
+  }
+  .banner__item__desc a:after {
+    bottom:  -2px;
+    height: 4px;
+  }
+  .community__desc {
+    font-weight: bold;
+    color:burlywood;
+  }
 }
 </style>

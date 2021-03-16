@@ -13,23 +13,34 @@
     <section class="detail">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6">
-            <img :src="product.photo" alt="img" class="product__img" />
-            <div class="row">
+          <div class="col-lg-6 img__container">
+            <div class="main__img">
+            <img :src="product.photo" alt="img" class="product__img" v-if="product.photo"/>
+                <Spinner v-else/>
+            </div>
+            <div class="row sub__img">
               <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                <div class="particial__img" @click="changeImg(product.photo)">
-                  <img :src="product.photo" alt="img" class="product__img" />
+                <div class="particial__img" @click="changeImg(product.photo)" v-if="product.photo">
+                  <img :src="product.photo" alt="img"  />
+
                 </div>
+                   <div v-else></div>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                <div class="particial__img" @click="changeImg(product.photo)">
-                  <img :src="product.photo" alt="img" class="product__img" />
+                <div class="particial__img" @click="changeImg(product.photo)" v-if="product.photo">
+                  <img :src="product.photo" alt="img"  />
+
                 </div>
+                                      <div v-else></div>
+
               </div>
               <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                <div class="particial__img" @click="changeImg(product.photo)">
-                  <img :src="product.photo" alt="img" class="product__img" />
+                <div class="particial__img" @click="changeImg(product.photo)" v-if="product.photo">
+                  <img :src="product.photo" alt="img"  />
+
                 </div>
+                                      <div v-else></div>
+
               </div>
             </div>
           </div>
@@ -88,51 +99,18 @@
                 <p>scheduled to depart tomorrow</p>
               </div>
             </div>
-            <div class="row">
+            <div class="row product__info">
               <div>
-                <vs-collapse accordion>
-                  <vs-collapse-item>
-                    <div slot="header">
+                    <p slot="header">
                       Parcel Service -
                       <span class="free__shipping">free shipping</span>
-                    </div>
-                  </vs-collapse-item>
-                  <vs-collapse-item>
-                    <div slot="header">
-                      <i
-                        class="far fa-credit-card"
-                        style="margin-right: 5px; font-size: 22px;"
-                      ></i>
-                      Card-Free interest
-                    </div>
-                    Nunc auctor et leo vitae suscipit. Nullam aliquet purus
-                    scelerisque enim hendrerit tristique. Maecenas tincidunt dui
-                    arcu, a aliquet nisl venenatis vitae. Praesent mauris
-                    ligula,
-                  </vs-collapse-item>
-                  <vs-collapse-item>
-                    <div slot="header">
-                      Maximum purchase quantity of 100
-                    </div>
-                    Suspendisse aliquet condimentum diam, sed aliquam nisl
-                    dapibus et. Aliquam euismod ullamcorper dolor eu
-                  </vs-collapse-item>
-                  <vs-collapse-item>
-                    <div slot="header">
-                      Origin - Other Countries
-                    </div>
-                    Suspendisse aliquet condimentum diam, sed aliquam nisl
-                    dapibus et. Aliquam euismod ullamcorper dolor eu imperdiet.
-                    Nullam
-                  </vs-collapse-item>
-                  <vs-collapse-item>
-                    <div slot="header">
-                      Accumulate up to <span class="accumulate">2.3%</span>
-                    </div>
-                    Suspendisse aliquet condimentum diam, sed aliquam nisl
-                    dapibus
-                  </vs-collapse-item>
-                </vs-collapse>
+                    </p>
+                    <p>
+                      Category : {{product.category}}
+                    </p>
+                    <h3>
+                      Description : {{product.description}}
+                    </h3>
               </div>
             </div>
             <div class="row">
@@ -293,13 +271,15 @@ import Review from "../components/Review";
 import starRating from "vue-star-rating";
 import axios from "axios";
 import { Carousel, Slide } from "vue-carousel";
+import Spinner from "../components/Spinner";
 
 export default {
   components: {
     Carousel,
     Slide,
     Review,
-    starRating
+    starRating,
+    Spinner
   },
   data() {
     return {
@@ -380,6 +360,25 @@ export default {
 </script>
 
 <style>
+.product__info {
+  display: flex;
+  align-items: center;
+}
+.img__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 120px;
+}
+.sub__img {
+  display: flex;
+  margin: 0 auto;
+}
 .overlay {
   position: fixed;
   z-index: 9998;
@@ -462,16 +461,18 @@ export default {
 }
 .bread__crumb {
   background-color: #f3f2ee;
-  padding: 40px 0;
+  padding: 80px 0 40px 0;
 }
 .detail {
-  padding-top: 120px;
 }
 .vs-dialog {
   max-width: 80% !important;
   overflow: scroll !important;
 }
 .product__img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   cursor: pointer;
 }
@@ -495,8 +496,10 @@ export default {
 }
 .prod__quantity {
   display: flex;
+  align-items: center;
   text-align: end;
 }
+
 .prod__icon {
   margin-left: auto;
 }
@@ -633,5 +636,29 @@ export default {
   right: 30px !important;
   font-size: 30px;
   outline: 0 !important;
+}
+@media screen and (max-width: 900px) {
+  .prod__quantity p {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .total__price {
+    margin-right: 20px;
+  }
+  .cart__button {
+    font-size: 14px;
+  font-weight: bold;
+  }
+  .payment__button {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #e63740;
+  color: #fff;
+  cursor: pointer;
+}
+.product__info {
+  margin-bottom: 30px;
+}
 }
 </style>
