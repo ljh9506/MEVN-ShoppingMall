@@ -5,8 +5,6 @@
         :per-page="1"
         :autoplayTimeout="1000"
         :autoplay="true"
-        :navigationEnabled="true"
-        :navigationClickTargetSize="10"
         :paginationEnabled="false"
       >
         <Slide>
@@ -194,7 +192,7 @@ export default {
 .hero__slider {
   background-image: url("../img/hero/hero-1.jpg");
   width: 100%;
-  height: 750px;
+  height: 100vh;
   background-position: center center;
   background-size: cover;
   padding-top: 200px;
@@ -217,6 +215,22 @@ export default {
 .hero__text p {
   color: #3d3d3d;
   margin-bottom: 35px;
+}
+@media screen and (max-width: 700px) {
+  .hero__slider {
+    background-image: url("../img/hero/hero-2.jpg");
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 200px;
+  }
+  .hero__text h6 {
+    font-size: 22px;
+  }
+  .hero__text h2 {
+    font-size: 22px;
+  }
 }
 .primary-btn {
   display: inline-block;
@@ -241,14 +255,14 @@ export default {
   left: 100px;  
 } */
 .VueCarousel-navigation-prev {
-  left: 50px !important;
   font-size: 30px;
   outline: 0 !important;
 }
 .VueCarousel-navigation-next {
-  right: 50px !important;
   font-size: 30px;
   outline: 0 !important;
+}
+.VueCarousel-wrapper {
 }
 
 .banner {

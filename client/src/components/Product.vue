@@ -147,12 +147,14 @@ export default {
 .category {
   display: flex;
   justify-content: center;
-  margin-bottom: 45px;
+  align-items: center;
+  margin-bottom: 25px;
 }
 .category li {
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 8px;
   cursor: pointer;
-  margin-right: 88px;
 }
 .category li:last-child {
   margin-right: 0;

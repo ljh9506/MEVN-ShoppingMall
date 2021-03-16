@@ -1,104 +1,167 @@
 <template>
-  <header>
-    <div class="container">
-      <div class="row header">
-        <div class="col-lg-3 col-md-3">
-          <div class="header__logo">
-            <router-link to="/">
-              <img src="../img/logo.png" alt="logo" />
-            </router-link>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 ">
-          <nav class="header__menu">
-            <ul>
-              <li class="active"><router-link to="/">Home</router-link></li>
-              <li><router-link to="/shop">Shop</router-link></li>
-              <li>
-                <vs-dropdown>
-                  <a class="a-icon" href.prevent>
-                    Page
-                  </a>
+  <div class="container">
+    <vs-navbar shadow square center-collapsed v-model="active">
+      <template #left>
+        <img src="../img/logo.png" alt="logo" />
+      </template>
+      <template #right>
+        <vs-button
+          class="toggle"
+          @click="activeSidebar = !activeSidebar"
+          flat
+          icon
+        >
+          <i class="fas fa-bars"></i>
+        </vs-button>
+      </template>
+      <vs-navbar-item :active="active == 'guide'" id="guide">
+        Guide
+      </vs-navbar-item>
+      <vs-navbar-item :active="active == 'docs'" id="docs">
+        Documents
+      </vs-navbar-item>
+      <vs-navbar-item :active="active == 'components'" id="components">
+        Components
+      </vs-navbar-item>
+      <vs-navbar-item :active="active == 'license'" id="license">
+        license
+      </vs-navbar-item>
+      <vs-navbar-item flat>Login</vs-navbar-item>
+      <vs-navbar-item>Get Started</vs-navbar-item>
+    </vs-navbar>
+    <vs-sidebar left absolute v-model="active" :open.sync="activeSidebar">
+      <template #logo>
+        <!-- ...img logo -->
+      </template>
+      <vs-sidebar-item id="home">
+        <template #icon>
+          <i class="bx bx-home"></i>
+        </template>
+        Home
+      </vs-sidebar-item>
+      <vs-sidebar-item id="market">
+        <template #icon>
+          <i class="bx bx-grid-alt"></i>
+        </template>
+        Market Overview
+      </vs-sidebar-item>
+      <vs-sidebar-item id="Music">
+        <template #icon>
+          <i class="bx bxs-music"></i>
+        </template>
+        Music
+      </vs-sidebar-item>
+      <vs-sidebar-group>
+        <template #header>
+          <vs-sidebar-item arrow>
+            <template #icon>
+              <i class="bx bx-group"></i>
+            </template>
+            Social media
+          </vs-sidebar-item>
+        </template>
 
-                  <vs-dropdown-menu>
-                    <vs-dropdown-item to="/product">
-                      Upload Product
-                    </vs-dropdown-item>
-                    <vs-dropdown-item>
-                      Option 2
-                    </vs-dropdown-item>
+        <vs-sidebar-item id="Instagram">
+          <template #icon>
+            <i class="bx bxl-instagram"></i>
+          </template>
+          Instagram
+        </vs-sidebar-item>
+        <vs-sidebar-item id="twitter">
+          <template #icon>
+            <i class="bx bxl-twitter"></i>
+          </template>
+          Twitter
+        </vs-sidebar-item>
+        <vs-sidebar-item id="Facebook">
+          <template #icon>
+            <i class="bx bxl-facebook"></i>
+          </template>
+          Facebook
+        </vs-sidebar-item>
+      </vs-sidebar-group>
+      <vs-sidebar-group>
+        <template #header>
+          <vs-sidebar-item arrow>
+            <template #icon>
+              <i class="bx bx-code-alt"></i>
+            </template>
+            Coding
+          </vs-sidebar-item>
+        </template>
 
-                    <vs-dropdown-group
-                      vs-collapse
-                      vs-label="Group Collapse"
-                      vs-icon="add"
-                    >
-                      <vs-dropdown-item>
-                        Option Collapse 1
-                      </vs-dropdown-item>
-                      <vs-dropdown-item>
-                        Option Collapse 2
-                      </vs-dropdown-item>
-                      <vs-dropdown-group>
-                        <vs-dropdown-item>
-                          Sub Options 1
-                        </vs-dropdown-item>
-                        <vs-dropdown-item>
-                          Sub Options 2
-                        </vs-dropdown-item>
+        <vs-sidebar-item id="github">
+          <template #icon>
+            <i class="bx bxl-github"></i>
+          </template>
+          Github
+        </vs-sidebar-item>
+        <vs-sidebar-item id="codepen">
+          <template #icon>
+            <i class="bx bxl-codepen"></i>
+          </template>
+          Codepen
+        </vs-sidebar-item>
+        <vs-sidebar-item id="discord">
+          <template #icon>
+            <i class="bx bxl-discord"></i>
+          </template>
+          Discord
+        </vs-sidebar-item>
+        <vs-sidebar-item id="Javascript">
+          <template #icon>
+            <i class="bx bxl-javascript"></i>
+          </template>
+          Javascript
+        </vs-sidebar-item>
+        <vs-sidebar-item id="git">
+          <template #icon>
+            <i class="bx bxl-git"></i>
+          </template>
+          Git
+        </vs-sidebar-item>
+      </vs-sidebar-group>
+      <vs-sidebar-item id="donate">
+        <template #icon>
+          <i class="bx bxs-donate-heart"></i>
+        </template>
+        Donate
+      </vs-sidebar-item>
+      <vs-sidebar-item id="drink">
+        <template #icon>
+          <i class="bx bx-drink"></i>
+        </template>
+        Drink
+      </vs-sidebar-item>
+      <vs-sidebar-item id="shopping">
+        <template #icon>
+          <i class="bx bxs-shopping-bags"></i>
+        </template>
+        Shopping
+      </vs-sidebar-item>
+      <vs-sidebar-item id="chat">
+        <template #icon>
+          <i class="bx bx-chat"></i>
+        </template>
+        Chat
+      </vs-sidebar-item>
+      <template #footer>
+        <vs-row justify="space-between">
+          <vs-avatar>
+            <img src="/avatars/avatar-5.png" alt="" />
+          </vs-avatar>
 
-                        <vs-dropdown-group vs-collapse>
-                          <vs-dropdown-item vs-label="Sub Collapse">
-                            Sub Collapse 1
-                          </vs-dropdown-item>
-                          <vs-dropdown-item>
-                            Sub Collapse 2
-                          </vs-dropdown-item>
-                        </vs-dropdown-group>
-                      </vs-dropdown-group>
-                    </vs-dropdown-group>
+          <vs-avatar badge-color="danger" badge-position="top-right">
+            <i class="bx bx-bell"></i>
 
-                    <vs-dropdown-item divider>
-                      Option 3
-                    </vs-dropdown-item>
-                  </vs-dropdown-menu>
-                </vs-dropdown>
-              </li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Contacts</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-lg-3 col-md-3 ">
-          <div class="header__nav__option">
-            <router-link
-              to="/login"
-              class="login__route"
-              :class="{ hidden: this.$store.getters.isLogin }"
-              >Login</router-link
-            >
-            <router-link
-              v-if="!this.$store.getters.isLogin"
-              to="/signup"
-              class="login__route"
-              >Signup</router-link
-            >
-            <a v-else href="#" class="logout__route" @click="logoutUser"
-              >Logout</a
-            >
-            <i class="fas fa-search"></i>
-            <i class="far fa-heart"></i>
-            <router-link to="/cart"
-              ><i class="fas fa-shopping-cart"
-                >({{ this.$store.state.cart.length }})</i
-              ></router-link
-            >
-            <span>${{ this.$store.state.totalPrice - 4 }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+            <template #badge>
+              28
+            </template>
+          </vs-avatar>
+        </vs-row>
+      </template>
+    </vs-sidebar>
+  </div>
 </template>
 
 <script>
@@ -108,11 +171,33 @@ export default {
       this.$store.state.token = "";
       localStorage.setItem("vuex", "");
     }
-  }
+  },
+  data: () => ({
+    active: "home",
+    activeSidebar: false
+  })
 };
 </script>
 
 <style scoped>
+.container {
+  max-width: 1000px;
+}
+.vs-sidebar {
+  display: none !important;
+}
+@media screen and (min-width: 900px) {
+  .toggle {
+    display: none;
+  }
+  /* .vs-sidebar-content {
+    display: none;
+  } */
+}
+.logo {
+  max-width: 120px;
+  height: 100%;
+}
 .header {
   display: flex;
   align-items: center;

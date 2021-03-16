@@ -9,31 +9,28 @@
     "start": "../node server.js"
   },
   "dependencies": {
-    "axios": "^0.20.0",
-    "core-js": "^3.6.5",
-    "material-icons": "^0.3.1",
-    "vue-carousel": "^0.18.0",
-    "vue-router": "^3.2.0",
-    "vue-scroll-behavior": "^0.3.0",
-    "vue-star-rating": "^1.6.3",
-    "vuesax": "^3.12.2",
-    "vuex": "^3.4.0",
-    "vuex-persistedstate": "^3.1.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "^4.5.6",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "axios": "^0.20.0",
     "babel-eslint": "^10.1.0",
+    "core-js": "^3.6.5",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
+    "material-icons": "^0.3.1",
     "prettier": "^1.19.1",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "devDependencies": {
-    
+    "vue-carousel": "^0.18.0",
+    "vue-router": "^3.2.0",
+    "vue-scroll-behavior": "^0.3.0",
+    "vue-star-rating": "^1.6.3",
+    "vue-template-compiler": "^2.6.11",
+    "vuesax": "^4.0.1-alpha.25",
+    "vuex": "^3.4.0",
+    "vuex-persistedstate": "^3.1.0"
   },
   "eslintConfig": {
     "root": true,
