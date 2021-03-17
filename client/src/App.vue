@@ -27,4 +27,7 @@ export default {
   }
   
 }
+.vs-navbar__center {
+  margin-left: auto !important;
+}
 </style>

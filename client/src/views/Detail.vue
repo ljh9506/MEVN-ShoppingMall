@@ -99,7 +99,7 @@
                 <p>scheduled to depart tomorrow</p>
               </div>
             </div>
-            <div class="row product__info">
+            <div class="row product__info desc">
               <div>
                     <p slot="header">
                       Parcel Service -
@@ -311,7 +311,7 @@ export default {
     },
     async fetchData() {
       try {
-        const recommendedProducts = axios.get("/api/products");
+        const recommendedProducts = axios.get("/api/allproducts");
         const product = axios.get(`/api/products/${this.$route.params.id}`);
         const [productsResponse, singleResponse] = await Promise.all([
           recommendedProducts,
@@ -371,13 +371,13 @@ export default {
 .img__container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .main__img {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
 }
 .sub__img {
   display: flex;
@@ -464,13 +464,14 @@ export default {
 .particial__img img {
   display: inline-flex;
   max-width: 120px;
-  max-height: 49px;
+  max-height: 200px;
 }
 .bread__crumb {
   background-color: #f3f2ee;
   padding: 100px 0 30px 0;
 }
 .detail {
+  margin-top: 80px;
 }
 .vs-dialog {
   max-width: 80% !important;
@@ -497,6 +498,9 @@ export default {
 .product__info {
   display: flex;
   align-items: center;
+}
+.product__info.desc {
+  margin: 0 0 20px 0;
 }
 .divis {
   margin: 0 15px;
@@ -634,6 +638,9 @@ export default {
 .product__img {
   width: 100%;
 }
+.main__img img {
+ max-height: 600px;
+}
 .VueCarousel-navigation-prev {
   left: 30px !important;
   font-size: 30px;
@@ -665,7 +672,7 @@ export default {
   cursor: pointer;
 }
 .product__info {
-  margin-bottom: 30px;
+  margin: 0 0 30px 0;
 }
 .product__img {
   min-width: 150px;
@@ -694,6 +701,12 @@ export default {
 .particial__img img {
   width: 100%;
   max-height: 200px;
+}
+.detail {
+  margin-top: 20px;
+}
+.product__info.desc {
+  margin: 0 0 20px 5px;
 }
 }
 </style>

@@ -6,10 +6,10 @@
           <ul class="category">
             <li data-filter="*" @click="filterData($event)">Best Seller</li>
             <li data-filter="Shirts" @click="filterData($event)">
-              New Arrivals
+              New Shirts
             </li>
             <li data-filter="Shoes" @click="filterData($event)">
-              Hot sales
+              Hot Shoes
             </li>
           </ul>
         </div>
@@ -130,7 +130,7 @@ export default {
       this.activeIndex = "";
     },
     async fetchData() {
-      const response = await axios.get("/api/products");
+      const response = await axios.get("/api/allproducts");
       this.products = response.data.products;
     }
   },
@@ -155,7 +155,8 @@ export default {
   margin-bottom: 25px;
 }
 .category li {
-  font-size: 18px;
+  font-size: 28px;
+  margin: 0 25px;
   font-weight: bold;
   margin-right: 8px;
   cursor: pointer;
@@ -171,6 +172,7 @@ export default {
 .product__item img {
   display: block;
   width: 100%;
+  height: auto;
   position: relative;
 }
 .add-cart {

@@ -130,15 +130,7 @@
               <span class="deal__week">Deal Of the Week</span>
               <h2>Multi-pocket Chest Bag Black</h2>
               <div class="categories__deal__countdown__timer">
-                <div class="cd-item">
-                  <span>24</span>
-                </div>
-                <span>24</span>
-                <div class="cd-item"></div>
-                <span>24</span>
-                <div class="cd-item"></div>
-                <span>24</span>
-                <div class="cd-item last"></div>
+                <h1 id="clock" style="color:gray;">00:00</h1>
               </div>
               <a href="#" class="categories__btn">Shop now</a>
             </div>
@@ -173,12 +165,12 @@
 </template>
 
 <script>
+
 import Product from "./Product";
 import { Carousel, Slide } from "vue-carousel";
 export default {
   data() {
     return {
-      items: ["스시", "김치", "라멘", "갈비", "김치"]
     };
   },
   components: {
@@ -327,11 +319,12 @@ export default {
   font-size: 26px;
   color: #b7b7b7;
   font-weight: 400;
+  margin: 25px 0;
 }
 .categories__text span {
   display: block;
   color: #000;
-  margin: 50px 0;
+  margin: 25px 0;
 }
 .categories__hot__deal img {
   max-width: 100%;
