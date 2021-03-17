@@ -691,9 +691,9 @@ export default {
   height: 200px;
   overflow: hidden;
 } */
-.particial__img {
-  max-width: 100%;
-  max-height: 400px;
+.particial__img img {
+  width: 100%;
+  max-height: 200px;
 }
 }
 </style>

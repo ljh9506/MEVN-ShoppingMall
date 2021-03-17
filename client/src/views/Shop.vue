@@ -129,7 +129,7 @@
               <div class="row">
                 <div class="col-lg-6 col-md-6">Showing 1–12 of 126 results</div>
                 <div class="col-lg-6 col-md-6 shop__product__option__right">
-                  <div class="examplex sortby__product">
+                  <!-- <div class="examplex sortby__product">
                     <vs-dropdown>
                       <a class="a-icon" href.prevent>
                         Sort By Price
@@ -149,7 +149,7 @@
                         </vs-dropdown-item>
                       </vs-dropdown-menu>
                     </vs-dropdown>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -238,8 +238,12 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              1, 2, 3
+            <div class="row pagination">
+                <template>
+    <div class="center" @click="fetchData()">
+      <vs-pagination v-model="page" :length="3"  />
+    </div>
+  </template>
             </div>
           </div>
         </div>
@@ -263,7 +267,8 @@ export default {
       products: "",
       activeIndex: "",
       picked: "",
-      quantity: 1
+      quantity: 1,
+      page: 1
     };
   },
   methods: {
@@ -283,8 +288,12 @@ export default {
       }
     },
     async fetchData() {
-      const response = await axios.get("/api/products");
+      this.products = '';
+      const response = await axios.get(`/api/products?page=${this.page}`);
       this.products = response.data.products;
+    },
+    click() {
+      console.log(this.page)
     },
     addProductToCart(payload) {
       this.$store.dispatch("addProductToCart", payload);
@@ -297,6 +306,11 @@ export default {
 </script>
 
 <style>
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
 .bread__crumb {
   background-color: #f3f2ee;
   padding: 80px 0 40px 0;
