@@ -17,7 +17,7 @@
         </vs-button>
       </template>
       <vs-navbar-item :active="active == 'home'" id="home">
-        <router-link to="/">Home</router-link>
+        <router-link to="/" >Home</router-link>
       </vs-navbar-item>
       <vs-navbar-item :active="active == 'shop'" id="shop">
         <router-link to="/shop">Shop</router-link>
@@ -53,22 +53,27 @@
         <template #icon>
           <i class="bx bx-home"></i>
         </template>
-                <router-link to="/">Home</router-link>
+                <router-link to="/" @click.native="linkClick()">Home</router-link>
 
       </vs-sidebar-item>
       <vs-sidebar-item id="market">
         <template #icon>
           <i class="bx bx-grid-alt"></i>
         </template>
-        <router-link to="/shop">Shop</router-link>
+        <router-link to="/shop" @click.native="linkClick()">Shop</router-link>
       </vs-sidebar-item>
       <vs-sidebar-item id="Music">
         <template #icon>
           <i class="bx bxs-music"></i>
         </template>
-        <router-link to="/product">Upload Product</router-link>
+        <router-link to="/product" @click.native="linkClick()">Upload Product</router-link>
       </vs-sidebar-item>
-     
+     <vs-sidebar-item id="market">
+        <template #icon>
+          <i class="bx bx-grid-alt"></i>
+        </template>
+        <router-link to="/cart" @click.native="linkClick()">Cart</router-link>
+      </vs-sidebar-item>
       <vs-sidebar-item id="shopping">
         <template #icon>
           <i class="bx bxs-shopping-bags"></i>
@@ -76,6 +81,7 @@
         <router-link
               to="/login"
               :class="{ hidden: this.$store.getters.isLogin }"
+              @click.native="linkClick()"
               >Login</router-link
             >
       </vs-sidebar-item>
@@ -86,9 +92,10 @@
        <router-link
               v-if="!this.$store.getters.isLogin"
               to="/signup"
+              @click.native="linkClick()"
               >Signup</router-link
             >
-            <a v-else href="#" class="logout__route" @click="logoutUser"
+            <a v-else href="#" class="logout__route" @click="logoutUser(); linkClick()" 
               >Logout</a
             >
       </vs-sidebar-item>
@@ -112,11 +119,18 @@
 </template>
 
 <script>
+const sidebar = document.getElementsByClassName('vs-sidebar-content');
+
+
 export default {
   methods: {
     logoutUser() {
       this.$store.state.token = "";
       localStorage.setItem("vuex", "");
+    },
+    linkClick() {
+      sidebar[0].classList.toggle('open');
+      this.activeSidebar = false;
     }
   },
   data: () => ({
@@ -209,9 +223,10 @@ li .router-link-exact-active:after {
 }
 
 .router-link-active {
-  display: block !important; 
-  width: 100% !important;
- padding: 0 100px 0 0 !important;
 }
-
+@media screen and (min-width: 900px) {
+    .toggle {
+      display: none;
+    }
+}
 </style>

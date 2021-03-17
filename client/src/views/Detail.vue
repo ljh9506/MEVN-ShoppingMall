@@ -229,7 +229,7 @@
             <div class="row">
               <h2>recommend Products</h2>
             </div>
-            <div class="row">
+            <div class="row recommend__product">
               <div class="col-lg-12">
                 <div class="slider">
                   <Carousel
@@ -360,6 +360,10 @@ export default {
 </script>
 
 <style>
+.VueCarousel-inner {
+  display: flex ;
+  align-items: center;
+}
 .product__info {
   display: flex;
   align-items: center;
@@ -399,6 +403,7 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
+  min-width: 600px;
 }
 
 .close {
@@ -420,6 +425,7 @@ export default {
 .item__box {
   display: flex;
   padding: 20px;
+  align-items: center;
 }
 .cart__item {
   display: flex;
@@ -461,7 +467,7 @@ export default {
 }
 .bread__crumb {
   background-color: #f3f2ee;
-  padding: 80px 0 40px 0;
+  padding: 100px 0 30px 0;
 }
 .detail {
 }
@@ -659,6 +665,25 @@ export default {
 }
 .product__info {
   margin-bottom: 30px;
+}
+.product__img {
+  min-width: 150px;
+}
+.VueCarousel-inner {
+  width: 100%;
+  overflow-x: scroll;
+}
+.modal {
+  position: fixed;
+  width: auto;
+  height: auto;
+  z-index: 9999;
+  margin: 0px auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  min-width: 100%;
 }
 }
 </style>

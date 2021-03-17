@@ -49,6 +49,7 @@
                   <div class="photo">
                     <img :src="product.photo" alt="item_img" />
                   </div>
+                  <div class="item__container">
                   <div class="item__desc">
                     <div class="item__title">{{ product.description }}</div>
                   </div>
@@ -65,6 +66,7 @@
                   </div>
                   <div class="item__price">
                     ${{ product.price * product.quantity }}
+                  </div>
                   </div>
                   <span class="delete__button" @click="deleteCart(product)"
                     ><i class="fas fa-times"></i
@@ -216,9 +218,15 @@ export default {
 </script>
 
 <style>
+.item__container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
 .bread__crumb {
   background-color: #f3f2ee;
-  padding: 40px 0;
+  padding: 100px 0 30px 0;
 }
 .cart {
   background-color: #f3f2ee;
@@ -320,6 +328,7 @@ export default {
   display: flex;
   padding: 15px 54px;
   align-items: center;
+  justify-content: center;
 }
 .cart__item__footer {
   background-color: #f8f9fa;
@@ -463,5 +472,66 @@ export default {
   .cart__item__total i {
     font-size: 10px;
   }
+  .item__price {
+    margin: 0;
+    font-size: 20px;
+  }
+  .item__title {
+    font-size: 18px;
+    margin: 0;
+  }
+  .photo img {
+    max-width: 120px;
+    height: auto;
+  }
+  .minus,
+.plus {
+  width: 22px;
+  height: 22px;
+  background: #f2f2f2;
+  border-radius: 4px;
+  padding: 8px 5px 8px 5px;
+  border: 1px solid #ddd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.item__qty input {
+  width: 22px;
+  height: 22px;
+}
+.item__qty {
+  margin: 0;
+}
+.item__container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cart__item__total {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.minus__icon {
+  font-size: 24px;
+  padding: 10px 0;
+}
+.plus__icon {
+  font-size: 24px;
+  padding: 10px 0;
+}
+.equal__icon {
+  font-size: 24px;
+  padding: 0 
+}
+.product__price {
+  display: flex;
+  flex-direction: column;
+}
+
 }
 </style>

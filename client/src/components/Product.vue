@@ -14,7 +14,7 @@
           </ul>
         </div>
       </div>
-      <div class="row">
+      <div class="row product__images">
         <div
           class="col-lg-3 col-md-6 col-sm-6"
           v-for="(product, i) in products"
@@ -141,6 +141,10 @@ export default {
 </script>
 
 <style>
+.product__images {
+  display: flex;
+  align-items: center;
+}
 .product {
   padding: 150px 0;
 }

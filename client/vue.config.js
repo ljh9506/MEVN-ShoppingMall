@@ -9,5 +9,6 @@ module.exports = {
       }
     },
     overlay: false
-  }
+  },
+  lintOnSave: false
 };
