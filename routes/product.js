@@ -30,11 +30,17 @@ router.post(
         message: error.message,
       });
     }
-  }
+  },
 );
 
 router.get('/products', async (req, res) => {
-  let products = await Products.find().populate('reviews').exec();
+  const page = req.query.page ? req.query.page : 1;
+
+  let products = await Products.find()
+    .populate('reviews')
+    .skip((page - 1) * 2)
+    .limit(2)
+    .exec();
 
   res.json({
     success: true,
