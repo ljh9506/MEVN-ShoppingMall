@@ -93,9 +93,8 @@
                       <li><a href="#">최신순</a></li>
                     </ul>
                     <router-link
-                      :to="{
-                        path: `/review/${product.id}`
-                      }"
+                    :to="`/review/${product.id}`"
+                      @click="writeReview()"
                       class="review__write"
                     >
                       <span>
@@ -281,6 +280,12 @@ export default {
         .reverse();
       this.ratingCounts.forEach(rating => (this.ratingSum += rating));
       console.log(this.ratingCounts);
+    },
+     writeReview() {
+      if (!this.$store.getters.isLogin) {
+      alert('Please log in to write a review.')
+      return;
+    } 
     }
   },
   async mounted() {

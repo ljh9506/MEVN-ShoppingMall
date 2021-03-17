@@ -143,7 +143,13 @@ export default {
         console.log("error");
       }
     }
-  }
+  },
+  mounted() {
+    if (!this.$store.getters.isLogin) {
+      alert('Please log in to upload the file')
+      this.$router.push('/')
+    }
+  },
 };
 </script>
 

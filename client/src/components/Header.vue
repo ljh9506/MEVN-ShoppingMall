@@ -56,19 +56,19 @@
                 <router-link to="/" @click.native="linkClick()">Home</router-link>
 
       </vs-sidebar-item>
-      <vs-sidebar-item id="market">
+      <vs-sidebar-item id="shop">
         <template #icon>
           <i class="bx bx-grid-alt"></i>
         </template>
         <router-link to="/shop" @click.native="linkClick()">Shop</router-link>
       </vs-sidebar-item>
-      <vs-sidebar-item id="Music">
+      <vs-sidebar-item id="upload">
         <template #icon>
           <i class="bx bxs-music"></i>
         </template>
         <router-link to="/product" @click.native="linkClick()">Upload Product</router-link>
       </vs-sidebar-item>
-     <vs-sidebar-item id="market">
+     <vs-sidebar-item id="cart">
         <template #icon>
           <i class="bx bx-grid-alt"></i>
         </template>
@@ -127,6 +127,7 @@ export default {
     logoutUser() {
       this.$store.state.token = "";
       localStorage.setItem("vuex", "");
+      this.$route.push('/')
     },
     linkClick() {
       sidebar[0].classList.toggle('open');

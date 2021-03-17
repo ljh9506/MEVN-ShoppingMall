@@ -122,6 +122,10 @@ export default {
   },
   mounted() {
     console.log(this.$route.params);
+    if (!this.$store.getters.isLogin) {
+      alert('Please log in to write a review.')
+      this.$router.push(`/detail/${this.$route.params.id}`)
+    }
   }
 };
 </script>
