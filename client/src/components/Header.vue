@@ -49,16 +49,16 @@
       <template #logo>
         <!-- ...img logo -->
       </template>
-      <vs-sidebar-item id="home">
+      <vs-sidebar-item id="home" @click="linkClick($event)">
         <template #icon>
-          <i class="bx bx-home"></i>
+          <i class="bx bx-chat"></i>
         </template>
                 <router-link to="/" @click.native="linkClick()">Home</router-link>
 
       </vs-sidebar-item>
       <vs-sidebar-item id="shop">
         <template #icon>
-          <i class="bx bx-grid-alt"></i>
+          <i class="bx bx-chat"></i>
         </template>
         <router-link to="/shop" @click.native="linkClick()">Shop</router-link>
       </vs-sidebar-item>
@@ -121,15 +121,15 @@
 <script>
 const sidebar = document.getElementsByClassName('vs-sidebar-content');
 
-
 export default {
   methods: {
     logoutUser() {
       this.$store.state.token = "";
       localStorage.setItem("vuex", "");
-      this.$route.push('/')
+      this.$router.push('/')
     },
-    linkClick() {
+    linkClick(e) {
+      console.log(e)
       sidebar[0].classList.toggle('open');
       this.activeSidebar = false;
     }
@@ -142,6 +142,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   max-width: 1000px;
 }
@@ -223,7 +224,15 @@ li .router-link-exact-active:after {
   font-size: 18px;
 }
 
-.router-link-active {
+.vs-sidebar__item a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 260px;
+  height: 47px;
+}
+.vs-sidebar__item {
+  position: relative;
 }
 @media screen and (min-width: 900px) {
     .toggle {

@@ -463,7 +463,8 @@ export default {
 }
 .particial__img img {
   display: inline-flex;
-  width: 100%;
+  max-width: 120px;
+  max-height: 49px;
 }
 .bread__crumb {
   background-color: #f3f2ee;
@@ -684,6 +685,15 @@ export default {
   transform: translate(-50%, -50%);
   background-color: #fff;
   min-width: 100%;
+}
+/* .main__img {
+  width: 70%;
+  height: 200px;
+  overflow: hidden;
+} */
+.particial__img {
+  max-width: 100%;
+  max-height: 400px;
 }
 }
 </style>

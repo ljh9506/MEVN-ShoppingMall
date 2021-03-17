@@ -1,6 +1,8 @@
 <template>
-  <div class="login-page">
+<div class="container login__container">
+  <div class="login-page" v-if="!loading">
       <h2> Login</h2>
+      <p class="error">{{errorMessage}}</p>
     <div class="form">
       <form class="login-form" @submit.prevent="loginUser()">
         <input type="text" placeholder="email" v-model="email" />
@@ -13,32 +15,42 @@
       </form>
     </div>
   </div>
+  <Spinner class="spinner" v-else/>
+</div>
 </template>
 
 <script>
 import axios from "axios";
+import Spinner from '../components/Spinner'
 export default {
+  components: {
+    Spinner
+  },
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      errorMessage: '',
+      loading: false
     };
   },
   methods: {
-    kimchi() {
-      alert("boom");
-    },
+    
     async loginUser() {
       try {
+        this.loading = true
         let user = { email: this.email, password: this.password };
         let response = await axios.post("/api/auth/login", user);
         console.log(response.data);
+        this.loading = false
         if (response.data.success) {
           this.$store.commit("setToken", response.data.token);
           this.$router.push("/");
         }
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data.message);
+        this.errorMessage = error.response.data.message;
+        this.loading = false;
       }
     }
   }
@@ -46,8 +58,20 @@ export default {
 </script>
 
 <style scoped>
+.error {
+  color: #ef3b3a;
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.login__container {
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .login-page {
-  width: 360px;
   padding: 8% 0 0;
   margin: auto;
 }
