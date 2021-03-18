@@ -155,8 +155,8 @@ export default {
   margin-bottom: 25px;
 }
 .category li {
-  font-size: 28px;
-  margin: 0 25px;
+  font-size: 18px;
+  margin: 0 10px;
   font-weight: bold;
   margin-right: 8px;
   cursor: pointer;

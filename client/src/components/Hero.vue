@@ -3,7 +3,7 @@
     <section class="hero">
       <carousel
         :per-page="1"
-        :autoplayTimeout="2000"
+        :autoplayTimeout="4000"
         :autoplay="true"
         :paginationEnabled="false"
         :loop="true"

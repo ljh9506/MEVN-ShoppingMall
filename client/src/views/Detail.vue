@@ -233,9 +233,8 @@
               <div class="col-lg-12">
                 <div class="slider">
                   <Carousel
-                    :per-page="3"
+                    :per-page="1.5"
                     :navigationEnabled="true"
-                    :navigationClickTargetSize="10"
                     :paginationEnabled="false"
                   >
                     <Slide v-for="(product, i) in recommendedProducts" :key="i">
@@ -629,6 +628,9 @@ export default {
 .recommend {
   margin-top: 40px;
 }
+.recommend h2 {
+  margin-left: 15px;
+}
 .slider {
   width: 100%;
   height: 100%;
@@ -679,7 +681,9 @@ export default {
 }
 .VueCarousel-inner {
   width: 100%;
-  overflow-x: scroll;
+}
+.VueCarousel-navigation-button {
+  display: none;
 }
 .modal {
   position: fixed;
