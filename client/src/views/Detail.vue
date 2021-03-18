@@ -109,7 +109,7 @@
                       Category : {{product.category}}
                     </p>
                     <h3>
-                      Description : {{product.description}}
+                      {{product.description}}
                     </h3>
               </div>
             </div>
@@ -233,7 +233,7 @@
               <div class="col-lg-12">
                 <div class="slider">
                   <Carousel
-                    :per-page="1.5"
+                    :per-page="display"
                     :navigationEnabled="true"
                     :paginationEnabled="false"
                   >
@@ -282,6 +282,7 @@ export default {
   },
   data() {
     return {
+      display: 3,
       product: "",
       imgPath: "",
       price: "",
@@ -293,6 +294,13 @@ export default {
   },
 
   methods: {
+    onResize() {
+    if (window.innerWidth < 900) {
+      this.display = 1.5
+    } else {
+      this.display = 3
+    }
+  },
     addPrice() {
       this.price += this.product.price;
       this.quantity++;
@@ -354,7 +362,13 @@ export default {
   mounted() {
     console.log(this.$route.params);
     this.fetchData();
-  }
+  },
+  created() {
+  window.addEventListener('resize', this.onResize)
+},
+beforeDestroy() {
+  window.removeEventListener('resize', this.onResize)
+},
 };
 </script>
 
@@ -485,7 +499,7 @@ export default {
 }
 .product__desc h2 {
   font-size: 32px;
-  margin-bottom: 12px;
+  margin: 12px 0;
 }
 
 .filled__star {
@@ -500,6 +514,9 @@ export default {
 }
 .product__info.desc {
   margin: 0 0 20px 0;
+}
+.product__info.desc h3 {
+  margin-top: 20px;
 }
 .divis {
   margin: 0 15px;
@@ -640,9 +657,7 @@ export default {
 .product__img {
   width: 100%;
 }
-.main__img img {
- max-height: 600px;
-}
+
 .VueCarousel-navigation-prev {
   left: 30px !important;
   font-size: 30px;

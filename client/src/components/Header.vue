@@ -238,5 +238,30 @@ li .router-link-exact-active:after {
     .toggle {
       display: none;
     }
+    .fas {
+      color: #000;
+    }
 }
+@media screen and (max-width: 900px) {
+  .vs-navbar__line {
+      display: none !important;
+    }
+    .toggle {
+      background: black;
+    color: #fff;
+    }
+    .toggle:active {
+      background: black;
+    color: #fff;
+    }
+    .vs-button--flat:focus {
+      background: black;
+    color: #fff;
+    }
+    .vs-button--flat:hover {
+      background: black;
+    color: #fff;
+    }
+}
+
 </style>
