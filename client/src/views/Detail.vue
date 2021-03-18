@@ -179,7 +179,7 @@
                     <div class="row">
                       <div class="col-lg-12 item__box">
                         <div
-                          class="cart__items col-lg-3"
+                          class="cart__items"
                           v-for="item in this.$store.state.cart"
                           :key="item.id"
                         >
@@ -416,7 +416,7 @@ beforeDestroy() {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  min-width: 600px;
+  max-width: 1000px;
 }
 
 .close {
@@ -440,9 +440,16 @@ beforeDestroy() {
   padding: 20px;
   align-items: center;
 }
+.cart__items {
+  width: 100%;
+  margin-right: 12px;
+}
 .cart__item {
   display: flex;
   flex-direction: column;
+}
+.cart__item img {
+  max-width: 200px;
 }
 .modal__footer {
   padding: 30px 0;
@@ -726,6 +733,13 @@ beforeDestroy() {
 }
 .product__info.desc {
   margin: 0 0 20px 5px;
+}
+
+.modal {
+  min-width: 100%;
+}
+.cart__item img {
+  max-width: 50px;
 }
 }
 </style>

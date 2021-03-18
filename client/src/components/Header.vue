@@ -7,6 +7,11 @@
         </router-link>
       </template>
       <template #right>
+        <router-link to='cart'>
+        <i class="fas fa-shopping-cart">
+          <span class="cart__amount">{{ count }}</span>
+        </i>
+        </router-link>
         <vs-button
           class="toggle"
           @click="activeSidebar = !activeSidebar"
@@ -134,6 +139,11 @@ export default {
       this.activeSidebar = false;
     }
   },
+  computed: {
+    count() {
+      return this.$store.state.cartLength;
+    }
+  },
   data: () => ({
     active: "home",
     activeSidebar: false
@@ -234,6 +244,28 @@ li .router-link-exact-active:after {
 .vs-sidebar__item {
   position: relative;
 }
+
+.fa-shopping-cart {
+  position: relative;
+      margin-right: 12px;
+      font-size: 24px;
+    }
+.cart__amount {
+  z-index: 10;
+  display: flex;
+  position: absolute;
+  right: -10px;
+  top: -6px;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (min-width: 900px) {
     .toggle {
       display: none;
@@ -262,6 +294,15 @@ li .router-link-exact-active:after {
       background: black;
     color: #fff;
     }
+    .fa-shopping-cart {
+      margin-right: 32px;
+      font-size: 32px;
+    }
+    .cart__amount {
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
+}
 }
 
 </style>

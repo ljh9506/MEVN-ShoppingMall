@@ -271,7 +271,7 @@ export default {
 }
 .item__title {
   margin-left: 20px;
-  font-size: 26px;
+  font-size: 18px;
 }
 .item__price {
   margin-left: auto;

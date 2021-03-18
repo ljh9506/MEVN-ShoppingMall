@@ -113,6 +113,7 @@ export default {
 
 .vs-dialog {
   min-width: 500px !important;
+  overflow-x: hidden !important;
 }
 .vs-dialog__header {
   padding: 24px !important;

@@ -1,6 +1,6 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
+import Vue from "vue";
+import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -9,12 +9,12 @@ export default new Vuex.Store({
     cart: [],
     cartLength: 0,
     totalPrice: 0,
-    token: '',
+    token: ""
   },
   getters: {
     isLogin(state) {
-      return state.token !== '';
-    },
+      return state.token !== "";
+    }
   },
   mutations: {
     setToken(state, token) {
@@ -25,7 +25,7 @@ export default new Vuex.Store({
     },
     increaseProductQty(state, payload) {
       let findProduct = state.cart.find(
-        (prod) => prod._id === payload.product._id,
+        prod => prod._id === payload.product._id
       );
       findProduct.quantity += payload.quantity;
       const indexOfProduct = state.cart.indexOf(findProduct);
@@ -36,7 +36,7 @@ export default new Vuex.Store({
       state.cartLength = 0;
       console.log(state.cart);
       if (state.cart.length) {
-        state.cart.map((prod) => {
+        state.cart.map(prod => {
           state.cartLength += prod.quantity;
         });
       }
@@ -44,7 +44,7 @@ export default new Vuex.Store({
     totalProductPrice(state) {
       state.totalPrice = 0;
       if (state.cart.length) {
-        state.cart.map((prod) => {
+        state.cart.map(prod => {
           state.totalPrice += prod.quantity * prod.price;
         });
       }
@@ -59,20 +59,20 @@ export default new Vuex.Store({
     plusQty(state, product) {
       // 여기서 막힘
       console.log(product);
-      let cartProduct = state.cart.find((prod) => prod._id === product._id);
+      let cartProduct = state.cart.find(prod => prod._id === product._id);
       console.log(cartProduct);
       cartProduct.quantity++;
 
       state.cartLength = 0;
       if (state.cart.length) {
-        state.cart.map((product) => {
+        state.cart.map(product => {
           state.cartLength += product.quantity;
         });
       }
 
       state.totalPrice = 0;
       if (state.cart.length) {
-        state.cart.map((product) => {
+        state.cart.map(product => {
           state.totalPrice += product.quantity * product.price;
         });
       }
@@ -85,20 +85,20 @@ export default new Vuex.Store({
     minusQty(state, product) {
       // 여기서 막힘
       console.log(product);
-      let cartProduct = state.cart.find((prod) => prod._id === product._id);
+      let cartProduct = state.cart.find(prod => prod._id === product._id);
       console.log(cartProduct);
       cartProduct.quantity--;
 
       state.cartLength = 0;
       if (state.cart.length) {
-        state.cart.map((product) => {
+        state.cart.map(product => {
           state.cartLength += product.quantity;
         });
       }
 
       state.totalPrice = 0;
       if (state.cart.length) {
-        state.cart.map((product) => {
+        state.cart.map(product => {
           state.totalPrice += product.quantity * product.price;
         });
       }
@@ -112,28 +112,30 @@ export default new Vuex.Store({
     deleteCartItem(state, product) {
       const indexOfItem = state.cart.indexOf(product);
       state.cart.splice(indexOfItem, 1);
+      state.cartLength = state.cart.length;
       if (!state.cart.length) {
         state.cartLength = 0;
         state.totalPrice = 0;
       }
-    },
+    }
   },
 
   actions: {
     addProductToCart({ state, commit }, payload) {
       const cartProduct = state.cart.find(
-        (prod) => prod._id === payload.product._id,
+        prod => prod._id === payload.product._id
       );
       console.log(payload);
       if (!cartProduct) {
         payload.product.quantity = payload.quantity;
-        commit('pushProductToCart', payload.product);
+        commit("pushProductToCart", payload.product);
       } else {
-        commit('increaseProductQty', payload);
+        commit("increaseProductQty", payload);
       }
 
-      commit('increaseCartLength');
-      commit('totalProductPrice');
-    },
-  },
+      commit("increaseCartLength");
+      commit("totalProductPrice");
+      state.cartLength = state.cart.length;
+    }
+  }
 });
