@@ -1,14 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const path = require('path');
 const PORT = process.env.PORT || 5000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const app = express();
+require('dotenv').config();
 
+const app = express();
 mongoose.connect(
-  'mongodb+srv://leejh95:wnsgml95@cluster0.ujpis.mongodb.net/shoppingmall',
+  process.env.DATABASE,
   { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: true },
   (err) => {
     if (err) {

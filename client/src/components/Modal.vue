@@ -12,16 +12,15 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-4 ">
-            <img :src="product.photo" alt="" class="modal__img"/>
+            <img :src="product.photo" alt="" class="modal__img" />
           </div>
           <div class="col-lg-4 col-md-4">
             <h4>Title: {{ product.title }}</h4>
             <p>Description: {{ product.description }}</p>
             <p>Category: {{ product.category }}</p>
-          </div>
-          <div class="col-lg-4 col-md-4">
             <p>${{ product.price }}</p>
           </div>
+          <div class="col-lg-4 col-md-4"></div>
         </div>
       </div>
     </vs-dialog>
@@ -128,20 +127,20 @@ export default {
 
 @media screen and (max-width: 900px) {
   .vs-dialog {
-  max-width: 300px !important;
-  max-height: 575px !important;
-  overflow: hidden !important;
-}
+    max-width: 300px !important;
+    max-height: 575px !important;
+    overflow: hidden !important;
+  }
 }
 @media screen and (max-width: 500px) {
   .vs-dialog {
-  min-width: 100% !important;
-  height: 575px !important;
-  overflow: hidden !important;
-}
-.modal__img {
-  margin: 10px auto;
-  display: block;
-}
+    min-width: 100% !important;
+    height: 575px !important;
+    overflow: hidden !important;
+  }
+  .modal__img {
+    margin: 10px auto;
+    display: block;
+  }
 }
 </style>
