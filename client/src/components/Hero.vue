@@ -177,7 +177,7 @@ export default {
     Carousel,
     Slide,
     Product
-  }
+  },
 };
 </script>
 

@@ -50,7 +50,6 @@ router.get('/products', async (req, res) => {
 
 router.get('/allproducts', async (req, res) => {
   let products = await Products.find().populate('reviews').exec();
-
   res.json({
     success: true,
     products: products,
